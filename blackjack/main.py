@@ -14,7 +14,7 @@ class Deck:
 	def deal(self):
 		for i in self.colors:
 			for j in self.card_types:
-				card = Card(i, j)
+				card = Card(j, i)
 				self.cards.append(card)
 
 		return self.cards
@@ -39,6 +39,10 @@ class BlackJack:
 
 		return card
 
+	def deal_dealer(self):
+		for i in range(2):
+			self.game_state["dealer"].append(self.pick_card())
+
 	def deal_cards(self):
 		self.init_game_state()
 
@@ -59,8 +63,15 @@ class BlackJack:
 			self.game_state[player_str] = []
 			self.player_scores[player_str] = 0
 
+	def calculate_dealer_score(self):
+		for card in self.game_state["dealer"]:
+			# self.dealer_score += int(card.card_type)
+			print(card.card_type)
+
 	def new_game(self):
 		self.deal_cards()
+		self.deal_dealer()
+		self.calculate_dealer_score()
 
 
 new_game = BlackJack()
