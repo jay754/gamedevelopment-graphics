@@ -49,6 +49,7 @@ class BlackJack:
 					self.game_state[key].append(self.pick_card())
 
 		print(self.game_state)
+		print(self.player_scores)
 
 	def init_game_state(self):
 		self.game_state["dealer"] = []
@@ -56,6 +57,7 @@ class BlackJack:
 		for player in range(self.num_of_players):
 			player_str = "player_" + str(player+1)
 			self.game_state[player_str] = []
+			self.player_scores[player_str] = 0
 
 	def new_game(self):
 		self.deal_cards()
